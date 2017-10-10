@@ -1,0 +1,22 @@
+20171010
+2017-arxiv-Multiresolution Consensus Clustering in Networks
+content:
+based on modularity
+Reichart and Bornholdt version: Q(g->,r)= sum(A_ij - rP_ij)I(g_i, g_j)
+P_ij = k_i*k_j/2m ----adjusted 
+r resolution parameter which infuence the sizes of the clusters----adjusted----use sampling
+
+sampling strategies for r
+满足实际clusters的大小分布是小的较多，大的cluster较少
+抽样的策略满足了通过均匀抽样beta，得到符合上述要求的r
+
+consensus clustering
+不同r产生划分结果进行组合是通过生成co-classification matrix
+
+null models for consens clustering
+另模型的引入，为了说明co-classification matrix是否显著---调整了此前modularity公式里的矩阵P。其假设co-classification matrix中各个元素是符合伯努利分布的。最终得到local permutation model----P^lperm
+最终调整了modularity计算公式Q_c(g->, a) = sum(C_ij - p^lperm_ij(a))I(g_i, g_j)
+
+Hierarchical consensus procedure
+迭代的过程，每次优化调整后的modularity计算方式得到最新的划分结果，然后再更新co-classification matrix, 然后再优化。抽样的过程融合在这个过程中。
+
