@@ -1,0 +1,15 @@
+20171016
+2010-nature-Link communities reveal multi-scale complexity in networks
+content:
+问题1，传统对community的定义是internal connections 多于external connections的。但是当overlap普遍存在的时候，实际上是external 比internal 多。
+问题2，层次的社区发现方法并不适用于overlap存在的情况。
+所以，重新定义社区，不再是一组点的集合而是一组紧密连接边的集合。
+使用hierarchical tree，每个叶子节点是一条边
+
+link similarity measure:
+S(e_ik, e_jk) = |n(i) & n(j)|/|n(i)|n(j)|
+
+partition density
+community c中的链接数被标准化，通过相同节点数可能构成的最大的链接量和最小链接量
+D_c = /frac{m_c - (n_c -1)}{n_c*(n_c)/2 - (n_c - 1)}
+m_c是社区c中的边，n_c表示这个社区中的节点
