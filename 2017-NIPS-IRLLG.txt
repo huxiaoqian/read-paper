@@ -1,0 +1,58 @@
+20171025
+2017-NIPS-Inductive Representation Learning on Large Graphs
+content:
+1 问题:low-dimensional embeddings 在大图上的预测，推荐等问题较为有效
+但是大部分方法要求训练阶段需要所有节点都是可见的
+（半监督学习的直推学习transductive，
+----已知测试集，即只需要在测试集上取得较好的泛化性）
+2 解决的问题: 根据现有的知识学习unseen的节点的embedding
+解决方法:学习出生成embedding的函数--通过sampling 和aggregating特征
+         基于!!节点局部的邻居!!的情况
+应用场景：unseen节点的分类在!!evolving information graph!!
+3 方法:
+目标是学习一个出来embedding function 从而生成没看到的节点
+一系列的aggregator functions 来通过节点的局部邻居的特征信息进行迭代聚合
+每个aggregator function聚合指定跳数（遍历深度）的节点信息
+适用于节点特征丰富的网络，同时也能够推广适用于没有节点特征的网络
+
+应用场景是节点分类问题
+数据:two evolving document graphs based on citation data and Teddit post data
+     （分别预测文章，以及推文类型）
+     a multigraph generalization experiment(蛋白间交互的数据，预测蛋白的功能)
+
+方法: 
+1 GraphSAGE
+step0:某一层的邻居节点的信息学习
+step1:然后新一层和之前的累积结果进行融合(这里有参数)
+2 learning the parameter of GraphSAGE
+定义了损失函数（结构相近的节点具有很强相似性，结构不相近的作为惩罚）
+用梯度下降的方式计算
+3 Aggregator Architectures
+这个部分使用GCN的方式进行局部节点特征的聚合学习
+
+
+优点:
+不是一个固定网络库进行节点的表示学习
+而是一个节点表示学习生成过程的学习
+从而支持对于未知节点的学习
+
+缺点:
+还是基于结构上局部邻接的方式----指定邻接层数的方式固定
+
+是不是可以考虑block model的概率生成模型融合进来，
+做到真正意义上的生成过程的学习？？
+
+
+related work
+1 factorization-based embedding approaches
+基于random walk和matrix factorization-based---与现有方法很接近
+2 supervised learning over graphs
+基于kernel的方法----分类整个图
+这个工作是为单个节点生成表示方法
+3 graph convolutional networks
+将cnn的使用不具有规模化并且是对整个网络分类
+本文类似于GCN----半监督方法
+
+
+
+
