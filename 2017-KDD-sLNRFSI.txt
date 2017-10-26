@@ -1,0 +1,75 @@
+20171026
+2017-KDD-struc2vec:Learning Node Representations from Structural Identity
+content: 
+1 目标问题：结构的identity和学习----structural equivalence task
+2 方法：使用hierarchy学习节点在不同scale上的相似性，
+        并构建多层网络来对结构相似性的进行编码，
+        从而生成每个节点的structural context 
+3 此前方法：通过distance/recursion
+     隐含的假设使具有相近的邻居节点时表示相似
+     但是邻居节点时！！局部！！的概念
+本文解决的问题是：邻居节点不同，
+                  但是在结构上的位置相似
+                  capture structural identity is a relative orthogonal problem that has not received much attention
+(无监督)
+
+本文主要贡献：
+1) 评价结构的相似性，分别从节点、边的属性以及在网络中位置
+2) 建立hierarchy衡量结构相似性，以及定义什么叫做结构相似性
+3) 生成节点的表示---基于加权的随机游走的方式遍历多层网络
+
+
+方法:
+1 结构相似性的计算---不同层级的距离计算和累积
+每一层的邻接节点集合的相似性计算   
+     --节点度排序为序列，用DTW算法进行度量
+2 construct the context graph
+节点在每一层中有连接，边权重由及节点间的相似性计算得到
+节点在每一层之间对应连接，层与层之间的链接也有权重（结合示性的）
+3 generating context for nodes
+多层网络间的进行随机游走的方式
+4 表示学习
+仍然采用的是hierarchical softmax和skip-gram
+
+
+仍然存在的问题:
+1 仍然有节点间的结构的选取范围的问题
+---其实就是把subgraph2vec中一跳的邻接节点信息扩展为多跳结构的学习
+2 其实本质上还是节点的局部信息学习表示，而不是多节点的结构学习表示
+3 计算效率比较低---实验数据集都很小---千级的节点和边的量
+
+
+脑洞：
+1 multi-layer network迁移到异质网络上？
+2 可以作为迁移学习的一种方式？因为相当于两个网络，
+然后根据左边的一个网络学习出来另一个网络中对应的内容（多语言翻译？）
+3 embedding+社区抽取？抽取出结构相似的社区团体
+
+相关文献：
+1 deepwalk/node2vec 
+均是基于random walk和其变种
+但是结构相似性可能有节点相似但是他们的距离是大于skip-gram的window
+2 subgraph2vec 
+学习rooted subgraphs的embedding--也是捕捉结构对等
+不是用随机游走，而是简单的邻居节点进行学习
+但是其相似性的定义很强，如果两个节点没有overlap的邻居节点，
+这两个节点可能不会很相近
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+event early embedding：predicting event volume dynamics at early stage   2017 SIGIR
