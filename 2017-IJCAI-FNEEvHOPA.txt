@@ -1,0 +1,14 @@
+20171029
+2017-IJCAI-Fast Network Embedding Enhancement via High Order Proximity Approximation
+content:
+总结NRL分为两步--相似性矩阵的构建+降维
+结论---相似性矩阵构建步骤，通过高阶的相似性度量方式能够提高模型表现
+但是高阶的相似性计算复杂，所以本文是高效的近似高阶相似性计算的方案
+
+节点间k-order proximity matrix
+A^k = A·A·A...A
+
+
+其实有一些文章中所谓的扩展局部信息的内核就是这个工作
+
+
