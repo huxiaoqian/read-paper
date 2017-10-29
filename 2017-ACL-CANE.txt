@@ -1,0 +1,22 @@
+20171029
+2017-ACL-CANE:Context-Aware Network Embedding for Relation Modeling
+content:
+
+Motivation：
+节点的embedding是static的
+但是节点与不同邻居节点interaction是展现不同的内容
+所以节点不同的interaction应该有dynamic的embedding
+
+节点u,v有e(u,v), 应该是有V(u) 和U(v)
+
+
+framework:
+1 output:结构的embedding+context的embedding
+2 目标函数--似然
+3 context-aware  cnn？？？
+
+
+脑洞：
+1 放在异质网络中--relation-aware
+同质间的embedding+relation-aware
+做link-prediction或者classification
