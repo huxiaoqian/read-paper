@@ -1,0 +1,39 @@
+20171029
+2017-IJCAI-TransNet: Translation-Based Network Representation Learning for Social Relation Extraction
+
+目标任务：social relation extraction
+特点：将节点间链接关系视为翻译操作
+
+motivation:
+忽视了边的语义信息（通常将边转化为binary或者连续值处理）
+实际上real-world network中边是具有丰富信息含义的
+并且两节点间可能存在多种类型relation
+
+SRE---没有预先定义好的关系类别
+
+input: 网络+部分有label的边
+output: 预测没有label的边
+
+构建的优化函数：
+1 trans的cost function
+头节点表示+边表示=尾节点表示
+2 construct edge representation的cost function
+3 overfitting 的cost function
+
+特点是:节点和边的表示都学习出来了，
+并且定义了边和节点表示向量间的推算。
+从而能够通过他们之间的计算推算出新的节点和新的边的表示方法
+
+问题：
+1 但是他的edge的标签还是固定的，就是还是由之前的label set确定好的
+2 头节点表示+边表示=尾节点表示 这种表示方式是不是还是更注重与局部的信息？？
+
+脑洞：
+1 融合学习节点和边的表示方法，然后当新节点出现后，
+推断出可能存在边---做边的预测问题
+（目标应用分类问题最好不做）
+2 未知边的预测，和错误边的判断？？
+3 对于紧密社区抽取---通过某种规则将边的表示和节点的表示融合在同一个框架下，
+一起学出来。从而支持推断新增节点的表示学习和新增边的表示学习，
+然后以类似与随机游走的方式，遍历增枝+剪枝的方式获取最紧密的社区
+（不是节点划分的方式）
