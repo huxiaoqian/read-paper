@@ -1,0 +1,21 @@
+20171027
+2017-KDD-metapath2vec: Scalable Representation Learning for Heterogeneous Networks
+content:
+异质网络的表示学习
+1 输入:meta-path
+输出:异质节点的embedding
+通过最大化似然（保留结构和语义上的相似性）
+2 此前的PTE方法（在文本上做的，词-文档-词标签）最终学习出来的是词的embedding，没有学出来异质对象的embedding。本文可以
+
+方法:
+1 类似于word2vec的方式构建似然函数
+在似然函数中表示出邻居节点属于不同的类型
+2 异质的随机游走
+定义不同类型节点间的跳转概率，
+均衡不同类型节点的数量会影响随机跳转的概率，使得跳转倾向于某一类型的节点
+
+
+
+脑洞：
+1 在不同的场景下调整simlarity的计算方式，然后做优化
+
