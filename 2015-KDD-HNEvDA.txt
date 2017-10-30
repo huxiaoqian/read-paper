@@ -8,8 +8,20 @@ cost function---logistic的框架下
 文字节点和图片节点的latent space expression通过nonlinear function
 转化为统一的表示下
 
+motivation: 多模态数据间的相似度度量
+
+目标：学习出映射函数，将多模态数据投射到公共空间，
+      从而使各object能够直接计算器相似度
+优化函数---有链接的节点间的embedding相似度程度最高
+（其中最终的embedding是由特征向量通过矩阵作用转化而来的）
+
+
+因此求解两个内容--特征向量和的选择和embedding的学习
+在deep框架下一起学出来-----相当于deep框架下每一层都是映射学习？
+输入：不同类型节点的节点对
+输出：各节点的embedding
 
 
 
-
-
+本身属于多模态数据---所以他的假设非常具有合理性
+特点是放在deep的框架下做整体求解
