@@ -1,0 +1,27 @@
+20171030
+2015-KDD-PTE: Predictive Text Embedding through Large-scale Heterogeneous Text Networks
+content:
+
+motivation:
+文本的embedding可以无监督（本文本身的词频概率能够做极大似然）学出来，
+虽然generalizable, 但是对于某一种特定的task可能具有比较弱的预测能力
+
+
+本文是希望能够实现labeled和unlabeled数据共存的情况下，学出embedding
+从而使得embedding能够表示出词语和文档语义的相近程度，同时具有较强的预测能力
+
+已有方法的问题：
+1 unsupervised---在学embedding的时候是不适用label的信息，
+labeled的信息是在后面训练分类器的时候使用
+2 semi-supervised---在学的时候讲labeled的信息放进来，
+所以学出来的embedding会对于分类比较好，
+但是那些unlabeled 的数据在训练的时候需要对这些word做pretrain得到embedding
+
+本文是在semi-supervised的框架下同时学出来labeled和unlabeled的embedding
+输出: 不同类型节点的embedding
+相当于把目前的分类优化对象的部分信息放在embedding学习过程直接学了
+(labeled的信息其实学习了两遍)
+
+数据特点--只有word之间具有同质链接，word-document是二分网络，word-label也是二分网络
+
+
